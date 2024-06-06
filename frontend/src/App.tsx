@@ -1,12 +1,11 @@
 import React from 'react';
-import ProdutoListar from './components/pages/produto/produto-listar';
-
+import CepConsultar from './components/pages/cep/cep-Consultar';
 
 function App() {
   return (
     <div className="App">
       <h1>Integrando API</h1>
-      <ProdutoListar></ProdutoListar>
+      <CepConsultar></CepConsultar>
     </div>
   );
 }
