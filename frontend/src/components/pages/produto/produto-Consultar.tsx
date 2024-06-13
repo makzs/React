@@ -21,31 +21,11 @@ function ProdutoListar(){
             });
     }
 
-    function cadastrarProduto(){
 
-        const produto : Produto = {
-            nome: "Macarrao",
-            descricao: "comida",
-            quantidade: 150,
-            valor: 15,
-        };
-
-        fetch("http://localhost:5259/produto/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(produto),
-        }).then((resposta) => resposta.json()).then((produto : Produto) =>
-            {
-                console.log(produto);
-            });
-    }
 
     return (
         < div >
             < h2 > Consultar Produto </ h2 >
-            <button onClick={cadastrarProduto}>Cadastrar</button>
             <table border={1}>
                 <thead>
                     <tr>
