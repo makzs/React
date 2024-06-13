@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Produto } from "../../../Models/Produto";
 import { parse } from "path";
+import { useNavigate } from "react-router-dom";
 
 function ProdutoCadastrar(){
 
+    const navigate = useNavigate();
     const[produtos, setProdutos] = useState<Produto[]>([]);
     const[nome, SetNome] = useState("");
     const[descricao, SetDescricao] = useState("");
@@ -48,6 +50,8 @@ function ProdutoCadastrar(){
                 SetDescricao("");
                 SetQuantidade("");
                 SetValor("");
+                // navega para um outro componente se tudo der certo
+                navigate("/pages/produto/listar");
             });
     }
 

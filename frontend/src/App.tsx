@@ -1,16 +1,31 @@
 import React from 'react';
-import CepConsultar from './components/pages/cep/cep-Consultar';
 import ProdutoListar from './components/pages/produto/produto-Consultar';
 import ProdutoCadastrar from './components/pages/produto/produto-Cadastrar';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <h1>Integrando API</h1>
-      <ProdutoListar></ProdutoListar>
-      <hr></hr>
-      <ProdutoCadastrar></ProdutoCadastrar>
-      <hr></hr>
+      <BrowserRouter>
+        <nav>
+          <ul>
+            <li>
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li><Link to={"/pages/produto/listar"}>Listar Produtos</Link></li>
+            <li><Link to={"/pages/produto/cadastrar"}>Cadastrar Produtos</Link></li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path='/pages/produto/listar' element={<ProdutoListar></ProdutoListar>} />
+          <Route path='/pages/produto/cadastrar' element={<ProdutoCadastrar></ProdutoCadastrar>} />
+        </Routes>
+        <footer>
+          <p>Desenvolvido por Erik</p>
+        </footer>
+        <hr></hr>
+      </BrowserRouter>
+
     </div>
   );
 }
