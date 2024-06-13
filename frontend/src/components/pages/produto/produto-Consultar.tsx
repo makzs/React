@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Produto } from "../../../Models/Produto";
+import axios from "axios";
 
 function ProdutoListar(){
 
@@ -21,7 +22,15 @@ function ProdutoListar(){
             });
     }
 
-
+    function deletar(id : string){
+        console.log("id: " + id);
+        //axios.delete("http://localhost:5259/produto/deletar/" + id);
+        axios.delete(`http://localhost:5259/produto/deletar/${id}`) .then((resposta) => {
+            // pega o corpo da requisição o axios.data
+            console.log(resposta.data);
+            setProdutos(resposta.data);
+        });
+    }
 
     return (
         < div >
@@ -35,17 +44,19 @@ function ProdutoListar(){
                         <th>Valor</th>
                         <th>Quantidade</th>
                         <th>Criado em</th>
+                        <th>Deletar</th>
                     </tr>
                 </thead>
                 <tbody>
                     {produtos.map(produto => (
-                        <tr>
+                        <tr key={produto.id}>
                             <td>{produto.id}</td>
                             <td>{produto.nome}</td>
                             <td>{produto.descricao}</td>
                             <td>{produto.valor}</td>
                             <td>{produto.quantidade}</td>
                             <td>{produto.criadoEm}</td>
+                            <td><button onClick={() => {deletar(produto.id!);}} >Deletar</button></td>
                         </tr>
                     ))}
 
